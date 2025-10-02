@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>إنشاء حساب جديد</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="profile">
+    <h1>🔐 إنشاء حساب مستخدم</h1>
+    <p class="bio">سجّل بياناتك للانضمام كمستخدم في المنصة</p>
+
+    <div class="section">
+      <div class="card">
+        <label>👤 اسم المستخدم:</label>
+        <input type="text" id="newUsername" class="input" placeholder="اسم المستخدم">
+
+        <label>🔒 كلمة المرور:</label>
+        <input type="password" id="newPassword" class="input" placeholder="كلمة المرور">
+
+        <label>🔁 تأكيد كلمة المرور:</label>
+        <input type="password" id="confirmPassword" class="input" placeholder="أعد كتابة كلمة المرور">
+
+        <label>
+          <input type="checkbox" id="terms">
+          أوافق على <a href="#">شروط الاستخدام</a>
+        </label>
+
+        <button onclick="registerUser()" class="link-item">إنشاء الحساب</button>
+      </div>
+    </div>
+
+    <div class="link-item link">
+      <a href="index.html">🔙 العودة لتسجيل الدخول</a>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 Taeh Dev - جميع الحقوق محفوظة
+    </div>
+  </div>
+
+  <script>
+    function registerUser() {
+      const username = document.getElementById('newUsername').value.trim();
+      const password = document.getElementById('newPassword').value.trim();
+      const confirm = document.getElementById('confirmPassword').value.trim();
+      const terms = document.getElementById('terms').checked;
+
+      if (!username || !password || !confirm) {
+        alert('يرجى ملء جميع الحقول');
+        return;
+      }
+
+      if (password !== confirm) {
+        alert('كلمة المرور غير متطابقة');
+        return;
+      }
+
+      if (!terms) {
+        alert('يجب الموافقة على الشروط');
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem('user_accounts')) || [];
+
+      // التحقق إن الاسم مش مستخدم
+      const exists = users.some(u => u.username === username);
+      if (exists) {
+        alert('اسم المستخدم مستخدم بالفعل');
+        return;
+      }
+
+      users.push({ username, password });
+      localStorage.setItem('user_accounts', JSON.stringify(users));
+      alert('تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن.');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+  </html>
