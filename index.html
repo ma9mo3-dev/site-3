@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بوابة الدخول</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="profile">
+    <h1>مرحباً بك في المنصة الموحدة</h1>
+    <p class="bio">اختر نوع الدخول حسب صلاحيتك</p>
+
+    <div class="section">
+      <h2><i class="fas fa-user"></i> تسجيل دخول</h2>
+      <div class="card">
+        <label>👤 اسم المستخدم:</label>
+        <input type="text" id="username" class="input" placeholder="ادخل اسم المستخدم">
+
+        <label>🔒 كلمة المرور:</label>
+        <input type="password" id="password" class="input" placeholder="ادخل كلمة المرور">
+
+        <button onclick="login()" class="link-item">تسجيل الدخول</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><i class="fas fa-code-branch"></i> خيارات أخرى</h2>
+      <div class="link-item link">
+        <a href="#" onclick="goToMaster()">🔑 دخول المطور الأساسي</a>
+      </div>
+      <div class="link-item link">
+        <a href="user.html">دخول كمستخدم 🌐</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 Teah Dev - جميع الحقوق محفوظة
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+                                                </html>
